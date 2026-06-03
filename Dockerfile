@@ -1,7 +1,7 @@
 # =========================================================================
-# Etapa 1: Compilación y empaquetado del proyecto con Maven y Java 8
+# Etapa 1: Compilación y empaquetado del proyecto con Maven y Java 11
 # =========================================================================
-FROM maven:3.8.6-openjdk-8 AS build
+FROM maven:3.8.6-openjdk-11 AS build
 WORKDIR /app
 
 # Copiar el archivo de configuración de dependencias
@@ -17,9 +17,9 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # =========================================================================
-# Etapa 2: Servidor de ejecución usando Apache Tomcat 9 con Java 8
+# Etapa 2: Servidor de ejecución usando Apache Tomcat 9 con Java 11
 # =========================================================================
-FROM tomcat:9.0-jdk8-corretto
+FROM tomcat:9.0-jdk11-openjdk-slim
 WORKDIR /usr/local/tomcat
 
 # Railway asigna un puerto dinámico mediante la variable de entorno $PORT.
@@ -30,13 +30,13 @@ RUN sed -i 's/port="8080"/port="${port.http}"/g' conf/server.xml
 RUN rm -rf webapps/*
 
 # Copiar el archivo WAR generado en la etapa de compilación.
-# Lo renombramos a ROOT.war para que tu app sea la aplicación principal y responda directamente en "/" 
-# (Evitando que tengas que escribir /Proyecto_final-1.0-SNAPSHOT/GastoAPI en la URL)
-COPY --from=build /app/target/Proyecto_final-1.0-SNAPSHOT.war webapps/ROOT.war
+# Usamos el artefacto correcto definido en tu pom.xml: demo-web-1.0-SNAPSHOT.war
+# Lo renombramos a ROOT.war para que responda directamente en la raíz "/"
+COPY --from=build /app/target/demo-web-1.0-SNAPSHOT.war webapps/ROOT.war
 
 # Exponer el puerto al entorno (Railway mapeará esto internamente)
 EXPOSE 8080
 
-# Definir la propiedad del puerto dinámico para Tomcat y arrancar el servidor
+# Definir la propiedad del puerto dinámico para Tomcat y arrancar el servidor de manera segura
 ENV JAVA_OPTS="-Dport.http=${PORT:-8080}"
 CMD ["catalina.sh", "run"]
