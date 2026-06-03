@@ -12,11 +12,11 @@ import java.sql.SQLException;
 public class DatabaseConfig {
 
     // Cambiar estos tres valores segun la base de datos que use el docente.
-    private static final String HOST     = "sql.freedb.tech";
-    private static final String PUERTO   = "3306";
-    private static final String NOMBRE   = "freedb_4RJJr4Rq";
-    private static final String USUARIO  = "u_mjGSRK";
-    private static final String CLAVE    = "Chz3dJSADnU8";
+    private static final String HOST     = "zephyr.proxy.rlwy.net";
+    private static final String PUERTO   = "28067";
+    private static final String NOMBRE   = "railway";
+    private static final String USUARIO  = "root";
+    private static final String CLAVE    ="frrcBpVFjXGzTAlHQhVZHIQxzOmIxwSX";
 
     private static final String URL =
         "jdbc:mysql://" + HOST + ":" + PUERTO + "/" + NOMBRE
