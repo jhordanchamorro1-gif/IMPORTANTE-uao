@@ -1,0 +1,231 @@
+/*
+  Hoja de estilos simple para una practica de JSP.
+  Objetivo: que se vea agradable sin complejidad innecesaria.
+*/
+
+:root {
+  --fondo-1: #fdf6ec;
+  --fondo-2: #f8efe2;
+  --panel: #ffffff;
+  --texto: #2f2a24;
+  --texto-suave: #6b6056;
+  --primario: #0f7b6c;
+  --primario-oscuro: #0a5d52;
+  --acento: #f2b24f;
+  --borde: #e7d9c7;
+  --sombra: 0 10px 24px rgba(47, 42, 36, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Nunito", "Trebuchet MS", sans-serif;
+  color: var(--texto);
+  background: radial-gradient(circle at top left, var(--fondo-1), var(--fondo-2));
+  min-height: 100vh;
+}
+
+.contenedor {
+  width: min(980px, 92%);
+  margin: 0 auto;
+  padding: 24px 0 40px;
+}
+
+.encabezado {
+  border: 2px solid var(--borde);
+  background: linear-gradient(130deg, #fff9f2, #fffdf9);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: var(--sombra);
+}
+
+.encabezado-objetos {
+  background: linear-gradient(130deg, #eefcf5, #fcfffd);
+  border-color: #bfe8da;
+}
+
+.encabezado-api {
+  background: linear-gradient(130deg, #eef6ff, #fbfdff);
+  border-color: #bfd3f5;
+}
+
+.encabezado h1 {
+  margin: 0;
+  font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+}
+
+.encabezado p {
+  margin: 10px 0 0;
+  color: var(--texto-suave);
+}
+
+.nav-ejercicios {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.nav-ejercicios a {
+  text-decoration: none;
+  padding: 10px 14px;
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  color: var(--primario-oscuro);
+  background: #fff;
+  font-weight: 700;
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+
+.nav-ejercicios a:hover {
+  transform: translateY(-2px);
+  border-color: var(--primario);
+}
+
+.seccion {
+  margin-top: 18px;
+  background: var(--panel);
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: var(--sombra);
+}
+
+.seccion h2,
+.seccion h3 {
+  margin-top: 0;
+}
+
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.tarjeta {
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 14px;
+  background: #fffdf8;
+}
+
+.codigo {
+  background: #fff8ee;
+  border: 1px dashed #e0c8a9;
+  border-radius: 10px;
+  padding: 10px;
+  overflow-x: auto;
+}
+
+.resultado {
+  border-left: 5px solid var(--primario);
+  background: #f3fbf8;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.preguntas li,
+.lista li {
+  margin-bottom: 8px;
+}
+
+.volver {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--primario-oscuro);
+  font-weight: 700;
+}
+
+.nota {
+  border: 1px solid #efc57e;
+  background: #fff6e8;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.pie {
+  margin-top: 20px;
+  color: var(--texto-suave);
+  font-size: 0.95rem;
+}
+
+.tabla-simple {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background: #fff;
+}
+
+.tabla-simple th,
+.tabla-simple td {
+  border: 1px solid var(--borde);
+  padding: 10px;
+  text-align: left;
+}
+
+.tabla-simple th {
+  background: #f4fbf7;
+  color: var(--primario-oscuro);
+}
+
+.herramienta-prueba {
+  display: grid;
+  gap: 14px;
+}
+
+.campos-prueba {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.campo-prueba {
+  display: grid;
+  gap: 6px;
+  font-weight: 700;
+  color: var(--primario-oscuro);
+}
+
+.campo-prueba input {
+  width: 100%;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font: inherit;
+  background: #fff;
+}
+
+.acciones-prueba {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.acciones-prueba button {
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: var(--primario);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--sombra);
+}
+
+.acciones-prueba button:hover {
+  background: var(--primario-oscuro);
+}
+
+.salida-prueba {
+  margin: 0;
+  padding: 14px;
+  background: #102923;
+  color: #e4fff7;
+  border-radius: 12px;
+  overflow-x: auto;
+  min-height: 130px;
+}
